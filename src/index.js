@@ -2,6 +2,7 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import mongoose from "mongoose";
 import userResolvers from "./resolvers/user.js";
+import tambulaResolver from "./resolvers/tambula.js";
 import typeDefs from "./typeDefs/typeDefs.js";
 import pkg from "lodash";
 import { getUser } from "./utils/context.js";
@@ -11,7 +12,7 @@ import { GraphQLError } from "graphql";
 dotenv.config();
 const { merge } = pkg;
 
-const resolvers = merge(userResolvers);
+const resolvers = merge(userResolvers, tambulaResolver);
 
 const server = new ApolloServer({
   typeDefs,
